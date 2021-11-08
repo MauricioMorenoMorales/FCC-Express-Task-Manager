@@ -1,19 +1,19 @@
 module.exports.getAllTasks = (req, res) => {
-	res.send('get all tasks');
+	res.json({ message: 'Received' });
 };
 
 module.exports.createTask = (req, res) => {
-	res.send('Task created')
-}
+	res.json({ message: req.body });
+};
 
 module.exports.getSingleTask = (req, res) => {
-	res.send('Get single task')
-}
+	res.json({ id: req.params.id });
+};
 
 module.exports.updateTask = (req, res) => {
-	res.send('Task Updated')
-}
+	res.json({ id: req.params.id, body: req.body });
+};
 
 module.exports.deleteTask = (req, res) => {
-	res.send('task deleted')
-}
+	res.json({ id: req.params.id });
+};

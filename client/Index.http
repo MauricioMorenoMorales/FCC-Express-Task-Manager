@@ -4,5 +4,26 @@
 ###
 GET {{host}}/hello
 
-###
+### gtAllTasks
 GET {{api}}
+### createTask
+POST {{api}}
+Content-Type: application/json
+
+{
+	"name": "shake and bake",
+	"completed": true
+}
+### Get Single Task
+GET {{api}}/peter
+###
+PATCH {{api}}/1
+Content-Type: application/json
+
+{
+	"name": "shake and bake",
+	"completed": true
+}
+
+###
+DELETE {{api}}/1

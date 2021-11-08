@@ -6,7 +6,7 @@ const tasks = require('./routes/tasks.routes');
 const port = process.env.PORT || 3000;
 
 //middlewares
-app.use(express.json())
+app.use(express.json());
 
 // routes
 app.get('/hello', (req, res) => {
