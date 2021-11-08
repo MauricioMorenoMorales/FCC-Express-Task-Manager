@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const connectionString = (userName, password) =>
-	`mongodb+srv://${userName}:${password}@nodejsplatzi.cg57m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+	`mongodb+srv://${userName}:${password}@nodejsplatzi.cg57m.mongodb.net/03-task-manager?retryWrites=true&w=majority`;
 
 const connectDB = url =>
 	mongoose.connect(

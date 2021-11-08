@@ -6,6 +6,7 @@ GET {{host}}/hello
 
 ### gtAllTasks
 GET {{api}}
+
 ### createTask
 POST {{api}}
 Content-Type: application/json
