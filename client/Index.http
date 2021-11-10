@@ -12,7 +12,7 @@ POST {{api}}
 Content-Type: application/json
 
 {
-	"name": "shake and bake",
+	"name": "     john    ",
 	"completed": true
 }
 ### Get Single Task
