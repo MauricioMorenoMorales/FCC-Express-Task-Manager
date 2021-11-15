@@ -19,14 +19,37 @@ module.exports.createTask = async (req, res) => {
 	}
 };
 
-module.exports.getSingleTask = (req, res) => {
-	res.json({ id: req.params.id });
+module.exports.getSingleTask = async (req, res) => {
+	try {
+		const { id: taskId } = req.params;
+		const task = await Task.findOne({ _id: taskId });
+		if (!task)
+			return res
+				.status(404)
+				.json({ message: `No task with id: ${taskId} founded` });
+		else return res.status(200).json({ task: task });
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json({ message: 'Id not found check it please' });
+	}
 };
 
-module.exports.updateTask = (req, res) => {
+module.exports.updateTask = async (req, res) => {
 	res.json({ id: req.params.id, body: req.body });
 };
 
-module.exports.deleteTask = (req, res) => {
-	res.json({ id: req.params.id });
+module.exports.deleteTask = async (req, res) => {
+	try {
+		const { id: taskId } = req.params;
+		const task = await Task.findOneAndDelete({ _id: taskId });
+
+		if (!task)
+			return res
+				.status(404)
+				.json({ message: `No task with id: ${taskId} founded` });
+		else return res.status(200).json({task: null, status: 'success'});
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json({ message: 'Id not found check it please' });
+	}
 };

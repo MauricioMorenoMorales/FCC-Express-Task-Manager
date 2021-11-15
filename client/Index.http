@@ -16,7 +16,7 @@ Content-Type: application/json
 	"completed": false
 }
 ### Get Single Task
-GET {{api}}/peter
+GET {{api}}/618938b8c44d1572d426986c
 ###
 PATCH {{api}}/1
 Content-Type: application/json
@@ -26,5 +26,5 @@ Content-Type: application/json
 	"completed": true
 }
 
-###
-DELETE {{api}}/1
+### deleteTask
+DELETE {{api}}/618938b8c44d1572d426986c
