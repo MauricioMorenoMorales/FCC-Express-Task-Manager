@@ -3,7 +3,7 @@ const Task = require('../models/task.model.js');
 module.exports.getAllTasks = async (req, res) => {
 	try {
 		const tasks = await Task.find({});
-		res.status(200).json({ tasks: tasks });
+		res.status(200).json({ tasks: tasks, amount: tasks.length});
 	} catch (error) {
 		res.status(500).json({ message: error.errors.name.message });
 	}
@@ -15,7 +15,7 @@ module.exports.createTask = async (req, res) => {
 		const task = await Task.create({ name, completed });
 		res.status(201).json({ task: task });
 	} catch (error) {
-		res.status(500).json({ message: error.errors.name.message });
+		res.status(500).json({ error });
 	}
 };
 
@@ -55,11 +55,14 @@ module.exports.updateTask = async (req, res) => {
 		const { id: taskId } = req.params;
 		const task = await Task.findOneAndUpdate({ _id: taskId }, req.body, {
 			new: true,
+			runValidators: true,
 		});
 		if (!task)
 			return res
 				.status(404)
 				.json({ message: `No task with id: ${taskId} founded` });
 		else return res.status(200).json({ message: 'task updated', task });
-	} catch (error) {}
+	} catch (error) {
+		console.log(error);
+	}
 };

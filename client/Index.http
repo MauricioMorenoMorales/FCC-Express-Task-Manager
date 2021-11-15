@@ -12,8 +12,8 @@ POST {{api}}
 Content-Type: application/json
 
 {
-	"name": "server still running",
-	"completed": false
+	"name": "Completed task",
+	"completed": true
 }
 ### Get Single Task
 GET {{api}}/618bd800f9ff9f8a85748ea8
@@ -22,9 +22,9 @@ PATCH {{api}}/618bd800f9ff9f8a85748ea8
 Content-Type: application/json
 
 {
-	"name": "testing edit",
-	"completed": false
+	"name": "Updating some things",
+	"completed": true
 }
 
 ### deleteTask
-DELETE {{api}}/618938b8c44d1572d426986c
+DELETE {{api}}/619281f2bbb7488488b41907
