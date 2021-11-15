@@ -16,14 +16,14 @@ Content-Type: application/json
 	"completed": false
 }
 ### Get Single Task
-GET {{api}}/618938b8c44d1572d426986c
+GET {{api}}/618bd800f9ff9f8a85748ea8
 ###
-PATCH {{api}}/1
+PATCH {{api}}/618bd800f9ff9f8a85748ea8
 Content-Type: application/json
 
 {
-	"name": "shake and bake",
-	"completed": true
+	"name": "testing edit",
+	"completed": false
 }
 
 ### deleteTask

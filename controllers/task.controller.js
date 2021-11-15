@@ -34,10 +34,6 @@ module.exports.getSingleTask = async (req, res) => {
 	}
 };
 
-module.exports.updateTask = async (req, res) => {
-	res.json({ id: req.params.id, body: req.body });
-};
-
 module.exports.deleteTask = async (req, res) => {
 	try {
 		const { id: taskId } = req.params;
@@ -47,9 +43,23 @@ module.exports.deleteTask = async (req, res) => {
 			return res
 				.status(404)
 				.json({ message: `No task with id: ${taskId} founded` });
-		else return res.status(200).json({task: null, status: 'success'});
+		else return res.status(200).json({ task: null, status: 'success' });
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json({ message: 'Id not found check it please' });
 	}
+};
+
+module.exports.updateTask = async (req, res) => {
+	try {
+		const { id: taskId } = req.params;
+		const task = await Task.findOneAndUpdate({ _id: taskId }, req.body, {
+			new: true,
+		});
+		if (!task)
+			return res
+				.status(404)
+				.json({ message: `No task with id: ${taskId} founded` });
+		else return res.status(200).json({ message: 'task updated', task });
+	} catch (error) {}
 };
