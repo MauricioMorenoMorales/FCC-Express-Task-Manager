@@ -1,13 +1,22 @@
 const Task = require('../models/task.model.js');
 
-module.exports.getAllTasks = (req, res) => {
-	res.json({ message: 'Received' });
+module.exports.getAllTasks = async (req, res) => {
+	try {
+		const tasks = await Task.find({});
+		res.status(200).json({ tasks: tasks });
+	} catch (error) {
+		res.status(500).json({ message: error.errors.name.message });
+	}
 };
 
 module.exports.createTask = async (req, res) => {
-	const { name, completed } = req.body;
-	const task = await Task.create({ name, completed });
-	res.status(201).json(task);
+	try {
+		const { name, completed } = req.body;
+		const task = await Task.create({ name, completed });
+		res.status(201).json({ task: task });
+	} catch (error) {
+		res.status(500).json({ message: error.errors.name.message });
+	}
 };
 
 module.exports.getSingleTask = (req, res) => {

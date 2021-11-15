@@ -4,7 +4,7 @@
 ###
 GET {{host}}/hello
 
-### gtAllTasks
+### getAllTasks
 GET {{api}}
 
 ### createTask
@@ -12,8 +12,8 @@ POST {{api}}
 Content-Type: application/json
 
 {
-	"name": "     john    ",
-	"completed": true
+	"name": "server still running",
+	"completed": false
 }
 ### Get Single Task
 GET {{api}}/peter
